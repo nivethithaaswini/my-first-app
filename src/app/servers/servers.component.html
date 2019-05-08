@@ -1,0 +1,38 @@
+<label>{{ 'The Server Name' }}</label>
+<!-- Event  Binding-->
+<!--<input type="text" class="form-control" (input)="OnUpdateServerName($event)">-->
+<!-- Two way Binding (Property and event)
+here [(ngModel)]="ServerName" is equivalent to
+[ngModel]="ServerName" (ngModelChange)="ServerName=$event"
+-->
+<input type="text" class="form-control"
+[ngModel]="ServerName" (ngModelChange)="ServerName=$event">
+<!--<p>{{ ServerName }}</p>-->
+<button class="btn btn-primary"
+[disabled]="!allowNewServer"
+(click)="OnCreateServer()">Add Server</button>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<!--String Interpolation-->
+<!--<p>{{allowNewServer}}</p>-->
+<!-- Property  Binding-->
+<!--<p [innerText]="allowNewServer"></p>-->
+<!--  The structural directive *ngIf can be interpreted as follows-->
+<!--  <ng-template [ngIf]="boovariable" [ngIfElse]= "loading">Server was created,
+  server name is {{ServerName}}</ng-template>-->
+<p *ngIf="boovariable;else loading">Server was created,
+  server name is {{ServerName}}</p>
+<ng-template #loading>
+<p>No server was created
+</p>
+</ng-template>
+<app-server *ngFor="let s of servers"></app-server>
+
+
+<input type="text" class="form-control" [(ngModel)]="username">
+<p>{{username}}</p>
+<p> {{Oncheckempty()}}</p>
+<!--<button class="btn-btn-primary"
+[disabled]="!usernameStatus"
+(click) ="OnClickUN()">Add Username</button>-->
+<button class="btn btn-primary" [disabled]="this.username == ''"
+(click)="this.username = ''"> On Click</button>

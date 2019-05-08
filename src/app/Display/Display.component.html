@@ -1,0 +1,36 @@
+
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+<body>
+<table style="width:60%" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Salary</th>
+      <th>Date of Birth</th>
+      <th width=260 align="center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let employee of employees">
+    <td align="center">{{ employee._id }}</td>
+    <td>{{ employee.fname }}</td>
+    <td>{{ employee.lname }}</td>
+    <td align="right">{{ employee.DOB }}</td>
+    <td align="right">{{ employee.salary | currency:'INR':'true' }}</td>
+
+    <td width=275 align="center">
+      <!-- <a class="btn btn-info" routerLink="/show/{{employee._id}}">Detail</a> -->
+      <a class="btn btn-success" routerLink="/edit/{{employee._id}}">Edit</a>
+      <a class="btn btn-danger" (click)="deleteEmployee(employee._id)">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
